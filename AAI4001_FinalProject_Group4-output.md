@@ -3,8 +3,8 @@
 ## 📊 Project Information
 
 - **Project Name**: `AAI4001_FinalProject_Group4`
-- **Generated On**: 2025-12-04 17:16:40 (Etc/GMT+5 / GMT-05:00)
-- **Total Files Processed**: 8
+- **Generated On**: 2025-12-04 17:44:44 (Etc/GMT+5 / GMT-05:00)
+- **Total Files Processed**: 9
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
 
@@ -21,14 +21,16 @@
 
 ```
 ├── 📁 fastapi_backend/
+│   ├── 📁 __pycache__/
+│   │   └── 📄 main.cpython-312.pyc (2.05 KB)
 │   ├── 📄 main.py (1.43 KB)
 │   ├── 📄 model.pkl (343.3 MB)
 │   ├── 📄 preprocessing.pkl (3.87 KB)
-│   └── 📄 requirements.txt (55 B)
+│   └── 📄 requirements.txt (64 B)
 ├── 📁 streamlit_frontend/
 │   ├── 📄 requirements.txt (34 B)
 │   └── 📄 streamlit_app.py (1.95 KB)
-├── 📄 README.md (405 B)
+├── 📄 README.md (448 B)
 └── 📄 test.txt (20 B)
 ```
 
@@ -49,10 +51,10 @@
 
 | Metric | Count |
 |--------|-------|
-| Total Files | 8 |
-| Total Directories | 2 |
+| Total Files | 9 |
+| Total Directories | 3 |
 | Text Files | 6 |
-| Binary Files | 2 |
+| Binary Files | 3 |
 | Total Size | 343.31 MB |
 
 ### 📄 File Types Distribution
@@ -62,9 +64,16 @@
 | `.txt` | 3 |
 | `.py` | 2 |
 | `.pkl` | 2 |
+| `.pyc` | 1 |
 | `.md` | 1 |
 
 ## 💻 File Code Contents
+
+## 🚫 Binary/Excluded Files
+
+The following files were not included in the text content:
+
+- `fastapi_backend/__pycache__/main.cpython-312.pyc`
 
 ### <a id="📄-fastapi-backend-main-py"></a>📄 `fastapi_backend/main.py`
 
@@ -146,15 +155,15 @@ def predict(input_data: CropInput):
 ### <a id="📄-fastapi-backend-requirements-txt"></a>📄 `fastapi_backend/requirements.txt`
 
 **File Info:**
-- **Size**: 55 B
+- **Size**: 64 B
 - **Extension**: `.txt`
 - **Language**: `text`
 - **Location**: `fastapi_backend/requirements.txt`
 - **Relative Path**: `fastapi_backend`
 - **Created**: 2025-12-04 17:07:23 (Etc/GMT+5 / GMT-05:00)
-- **Modified**: 2025-12-04 08:21:05 (Etc/GMT+5 / GMT-05:00)
-- **MD5**: `6d2d7becc116ced52ebad136ad68d497`
-- **SHA256**: `f9b2edd0881072e7d775abfe0a31b913df26854bdfb9ce762b5da5742924274e`
+- **Modified**: 2025-12-04 17:44:43 (Etc/GMT+5 / GMT-05:00)
+- **MD5**: `28065c7eb56b60f2bf4e9b3fab394cab`
+- **SHA256**: `158a5923089e2e248eb502f4e1981df7484e26410a239ed3bde3b1d666056cab`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -165,7 +174,8 @@ uvicorn
 pandas
 numpy
 joblib
-scikit-learn
+scikit-learn==1.6.1
+
 
 ```
 
@@ -305,15 +315,15 @@ st.caption("Powered by FastAPI + Streamlit + RandomForestRegressor")
 ### <a id="📄-readme-md"></a>📄 `README.md`
 
 **File Info:**
-- **Size**: 405 B
+- **Size**: 448 B
 - **Extension**: `.md`
 - **Language**: `text`
 - **Location**: `README.md`
 - **Relative Path**: `root`
 - **Created**: 2025-12-04 17:07:20 (Etc/GMT+5 / GMT-05:00)
-- **Modified**: 2025-12-04 08:21:36 (Etc/GMT+5 / GMT-05:00)
-- **MD5**: `7a37d8209640a933550cc00070e06b88`
-- **SHA256**: `acf933872beaf87f2676bad46ce7fb6f01bff28b5671c8c24eccdb6b23144f65`
+- **Modified**: 2025-12-04 17:44:26 (Etc/GMT+5 / GMT-05:00)
+- **MD5**: `6c3b79c8461dbc6b7dd1d5d2ea7939e5`
+- **SHA256**: `eaccf409fe11719949fec274989841267a39da8b0f4f7e08cc57557ef95ee164`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -324,14 +334,16 @@ AAI4001_FinalProject
 
 
 How to Run the FastAPI Backend
-1. Navigate to the backend folder: cd fastapi_backend
-2. pip install -r requirements.txt
-3. Start the API: uvicorn main:app --reload
+1. Open Terminal
+2. Navigate to the backend folder: cd fastapi_backend
+3. pip install -r requirements.txt
+4. Start the API: uvicorn main:app --reload
 
 How to Run the Streamlit Frontend
-1. Navigate to the frontend folder: cd streamlit_frontend
-2. pip install -r requirements.txt
-3. Run the app: streamlit run streamlit_app.py
+1. Open a new terminal
+2. Navigate to the backend folder: cd streamlit_frontend
+3. pip install -r requirements.txt
+4. Start the API: streamlit run streamlit_app.py
 
 ````
 
