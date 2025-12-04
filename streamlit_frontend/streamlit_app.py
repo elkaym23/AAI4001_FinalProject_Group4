@@ -75,6 +75,3 @@ if st.button("Predict Yield"):
 
 st.markdown("---")
 st.caption("Powered by FastAPI + Streamlit + RandomForestRegressor")
-
-
-AAI4001_FinalProject_Group4
