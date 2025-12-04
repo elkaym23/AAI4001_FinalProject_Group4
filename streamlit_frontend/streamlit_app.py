@@ -24,10 +24,11 @@ Item = st.selectbox("Crop Type", crop_list)
 Year = st.number_input(
     "Year",
     min_value=1990,
-    max_value=2012,
-    value=2000,
+    value=2025,   # default future year
     step=1
 )
+
+st.info("You may enter years beyond 2012. The model will extrapolate based on learned patterns, but accuracy decreases the farther you go into the future.")
 
 average_rain_fall_mm_per_year = st.number_input(
     "Average Rainfall (mm per year)",

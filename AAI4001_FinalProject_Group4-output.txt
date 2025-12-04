@@ -5,8 +5,8 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: AAI4001_FinalProject_Group4
-Generated On: 2025-12-04 17:45:04 (Etc/GMT+5 / GMT-05:00)
-Total Files Processed: 9
+Generated On: 2025-12-04 18:14:22 (Etc/GMT+5 / GMT-05:00)
+Total Files Processed: 8
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
 
@@ -31,24 +31,23 @@ PROJECT STRUCTURE
 │   └── 📄 requirements.txt (64 B)
 ├── 📁 streamlit_frontend/
 │   ├── 📄 requirements.txt (34 B)
-│   └── 📄 streamlit_app.py (1.95 KB)
-├── 📄 README.md (448 B)
-└── 📄 test.txt (20 B)
+│   └── 📄 streamlit_app.py (2.11 KB)
+└── 📄 README.md (448 B)
 
 ================================================================================
 PROJECT STATISTICS
 ================================================================================
-Total Files: 9
+Total Files: 8
 Total Directories: 3
-Text Files: 6
+Text Files: 5
 Binary Files: 3
 Total Size: 343.31 MB
 
 FILE TYPES DISTRIBUTION:
 ------------------------------
-.txt            : 3
 .py             : 2
 .pkl            : 2
+.txt            : 2
 .pyc            : 1
 .md             : 1
 
@@ -210,15 +209,15 @@ FILE: streamlit_frontend/streamlit_app.py
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 1.95 KB
+Size: 2.11 KB
 Extension: .py
 Language: python
 Location: streamlit_frontend/streamlit_app.py
 Relative Path: streamlit_frontend
 Created: 2025-12-04 17:07:23 (Etc/GMT+5 / GMT-05:00)
-Modified: 2025-12-04 16:55:12 (Etc/GMT+5 / GMT-05:00)
-MD5: 9ceeeac5bccddc47535fa8ab2db6ba37
-SHA256: 88cc81814a5d9fad864b52efe42d8163f0967aa86a8a30610a5f9363c11eefda
+Modified: 2025-12-04 18:14:21 (Etc/GMT+5 / GMT-05:00)
+MD5: ac8cbbce92b65bcbacccc652ea998675
+SHA256: f767ca9d18ae27bda798f10d19184025ca42d06219b0bfb3b994cede5e243d35
 Encoding: UTF-8
 
 FILE CONTENT:
@@ -249,10 +248,11 @@ Item = st.selectbox("Crop Type", crop_list)
 Year = st.number_input(
     "Year",
     min_value=1990,
-    max_value=2012,
-    value=2000,
+    value=2025,   # default future year
     step=1
 )
+
+st.info("You may enter years beyond 2012. The model will extrapolate based on learned patterns, but accuracy decreases the farther you go into the future.")
 
 average_rain_fall_mm_per_year = st.number_input(
     "Average Rainfall (mm per year)",
@@ -338,29 +338,5 @@ How to Run the Streamlit Frontend
 2. Navigate to the backend folder: cd streamlit_frontend
 3. pip install -r requirements.txt
 4. Start the API: streamlit run streamlit_app.py
-
-================================================================================
-
-
-================================================================================
-FILE: test.txt
-================================================================================
-
-FILE INFORMATION:
-----------------------------------------
-Size: 20 B
-Extension: .txt
-Language: text
-Location: test.txt
-Relative Path: root
-Created: 2025-12-04 17:16:05 (Etc/GMT+5 / GMT-05:00)
-Modified: 2025-12-04 17:16:13 (Etc/GMT+5 / GMT-05:00)
-MD5: 56530b62682e3319a320152a78e4a3bf
-SHA256: 4b3be81687585e40dd59c54ffd8360c8179f6918656b423e797bf68bda1edfe6
-Encoding: ASCII
-
-FILE CONTENT:
-----------------------------------------
-Will you push now?
 
 ================================================================================
