@@ -46,7 +46,7 @@ def predict(input_data: CropInput):
     # Apply preprocessing steps
     transformed = preprocessor.transform(df)
 
-    # Predict using optimized RandomForest (best_random_model)
+    # Predict using optimized RandomForest (best_odel)
     prediction = model.predict(transformed)[0]
 
     return {

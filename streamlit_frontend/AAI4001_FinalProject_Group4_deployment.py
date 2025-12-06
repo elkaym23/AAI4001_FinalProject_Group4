@@ -84,6 +84,7 @@ header[data-testid="stHeader"] {
         border-left: 4px solid #7a9b7a;
         margin: 1rem 0;
             align-items: center;
+            text-align: center;
     }
     
     .metric-card h2 {
@@ -358,7 +359,7 @@ observer.observe(document.body, {attributes: true});
 </script>
 """, unsafe_allow_html=True)
 
-msg = st.experimental_get_query_params().get("themeMode")
+msg = msg = st.query_params.get("themeMode")
 if msg:
     st.session_state.theme_mode = msg[0]
 
@@ -388,14 +389,13 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------------
-# TABS (Reduced to Option B)
+# TABS 
 # ---------------------------------------------------------
 tab1, tab2 = st.tabs([
     "📖 Introduction",
     "🎯 Live Yield Model",
     
 ])
-
 
 # TAB 1: Introduction
 with tab1:
@@ -457,7 +457,7 @@ with tab1:
     
     # Jamaica Focus Section
     st.markdown("""
-    <div class="badge">🇯🇲 Jamaica Focus</div>
+    <div class="badge">Jamaica Focus</div>
     <h3>Jamaica's Agricultural Vulnerability</h3>
     """, unsafe_allow_html=True)
     
@@ -532,7 +532,7 @@ with tab1:
 
 
 # ---------------------------------------------------------
-# TAB 2 — LIVE MODEL (REAL FASTAPI PREDICTION)
+# TAB 2 — LIVE MODEL (FASTAPI PREDICTION)
 # ---------------------------------------------------------
 with tab2:
 
