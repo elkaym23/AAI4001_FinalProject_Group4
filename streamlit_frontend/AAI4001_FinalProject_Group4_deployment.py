@@ -392,13 +392,118 @@ st.markdown(f"""
 # TABS 
 # ---------------------------------------------------------
 tab1, tab2 = st.tabs([
-    "📖 Introduction",
+    
     "🎯 Live Yield Model",
+    "📖 About Model",
     
 ])
 
-# TAB 1: Introduction
+
+# ---------------------------------------------------------
+# TAB 1 — LIVE MODEL (FASTAPI PREDICTION)
+# ---------------------------------------------------------
 with tab1:
+
+    st.header("🎯 Interactive Crop Yield Prediction (Live Model)")
+
+    # ---------------- SIDEBAR -----------------
+    with st.sidebar:
+
+        # -----------------------
+        # TITLE
+        # -----------------------
+        st.markdown('<div class="sidebar-title">🌾 Model Inputs</div>', unsafe_allow_html=True)
+
+        # -----------------------
+        # CROP & YEAR
+        # -----------------------
+        crop = st.selectbox(
+            "Crop Type",
+            [
+                "Maize", "Potatoes", "Rice, paddy", "Wheat", "Sorghum",
+                "Soybeans", "Sweet potatoes", "Plantains and others", "Yams"
+            ]
+        )
+
+        year = st.number_input(
+            "Year",
+            min_value=1990,
+            max_value=2050,
+            value=2025,
+            step=1
+        )
+
+        # -----------------------
+        # CLIMATE VARIABLES
+        # -----------------------
+        rainfall = st.number_input(
+            "Average Rainfall (mm/year)",
+            min_value=0,
+            max_value=4000,
+            value=1200,
+            step=10
+        )
+
+
+        temp = st.number_input(
+            "Average Temperature (°C)",
+            min_value=0.0,
+            max_value=40.0,
+            value=20.0,
+            step=0.1
+        )
+
+
+        # -----------------------
+        # AGRICULTURAL INPUTS
+        # -----------------------
+        pesticides = st.number_input(
+            "Pesticides Used (tonnes)",
+            min_value=0.0,
+            max_value=400000.0,
+            value=500.0,
+            step=1.0
+        )
+
+
+        # -----------------------
+        # BUTTON
+        # -----------------------
+        run_prediction = st.button("🚀 Predict Yield", use_container_width=True)
+
+
+    # ---------------- MODEL REQUEST -----------------
+    if run_prediction:
+        payload = {
+            "Item": crop,
+            "Year": int(year),
+            "average_rain_fall_mm_per_year": float(rainfall),
+            "avg_temp": float(temp),
+            "pesticides_tonnes": float(pesticides)
+        }
+
+        try:
+            response = requests.post("http://127.0.0.1:8000/predict", json=payload)
+
+            if response.status_code == 200:
+                prediction = response.json()["predicted_yield_hg_per_ha"]
+
+                st.markdown(f"""
+                <div class="metric-card">
+                    <h2>🌾 Predicted Crop Yield</h2>
+                    <h1>{prediction:,.2f} hg/ha</h1>
+                    <p>{crop} — {year}</p>
+                </div>
+                """, unsafe_allow_html=True)
+
+            else:
+                st.error("❌ FastAPI request failed. Check your backend server.")
+
+        except Exception as e:
+            st.error(f"⚠️ Error contacting model: {e}")
+
+# TAB 2: About Model
+with tab2:
     st.header("The Challenge of Predicting Crop Yields")
     
     st.markdown("""
@@ -527,112 +632,6 @@ with tab1:
             </div>
         </div>
         """, unsafe_allow_html=True)
-
-
-
-
-# ---------------------------------------------------------
-# TAB 2 — LIVE MODEL (FASTAPI PREDICTION)
-# ---------------------------------------------------------
-with tab2:
-
-    st.header("🎯 Interactive Crop Yield Prediction (Live Model)")
-
-    # ---------------- SIDEBAR -----------------
-    with st.sidebar:
-
-        # -----------------------
-        # TITLE
-        # -----------------------
-        st.markdown('<div class="sidebar-title">🌾 Model Inputs</div>', unsafe_allow_html=True)
-
-        # -----------------------
-        # CROP & YEAR
-        # -----------------------
-        crop = st.selectbox(
-            "Crop Type",
-            [
-                "Maize", "Potatoes", "Rice, paddy", "Wheat", "Sorghum",
-                "Soybeans", "Sweet potatoes", "Plantains and others", "Yams"
-            ]
-        )
-
-        year = st.number_input(
-            "Year",
-            min_value=1990,
-            max_value=2050,
-            value=2025,
-            step=1
-        )
-
-        # -----------------------
-        # CLIMATE VARIABLES
-        # -----------------------
-        rainfall = st.number_input(
-            "Average Rainfall (mm/year)",
-            min_value=0,
-            max_value=4000,
-            value=1200,
-            step=10
-        )
-
-
-        temp = st.number_input(
-            "Average Temperature (°C)",
-            min_value=0.0,
-            max_value=40.0,
-            value=20.0,
-            step=0.1
-        )
-
-
-        # -----------------------
-        # AGRICULTURAL INPUTS
-        # -----------------------
-        pesticides = st.number_input(
-            "Pesticides Used (tonnes)",
-            min_value=0.0,
-            max_value=400000.0,
-            value=500.0,
-            step=1.0
-        )
-
-
-        # -----------------------
-        # BUTTON
-        # -----------------------
-        run_prediction = st.button("🚀 Predict Yield", use_container_width=True)
-
-
-    # ---------------- MODEL REQUEST -----------------
-    if run_prediction:
-        payload = {
-            "Item": crop,
-            "Year": int(year),
-            "average_rain_fall_mm_per_year": float(rainfall),
-            "avg_temp": float(temp),
-            "pesticides_tonnes": float(pesticides)
-        }
-
-        try:
-            response = requests.post("http://127.0.0.1:8000/predict", json=payload)
-
-            if response.status_code == 200:
-                prediction = response.json()["predicted_yield_hg_per_ha"]
-
-                st.markdown(f"""
-                <div class="metric-card">
-                    <h2>🌾 Predicted Crop Yield</h2>
-                    <h1>{prediction:,.2f} hg/ha</h1>
-                    <p>{crop} — {year}</p>
-                </div>
-                """, unsafe_allow_html=True)
-
-            else:
-                st.error("❌ FastAPI request failed. Check your backend server.")
-
-        except Exception as e:
-            st.error(f"⚠️ Error contacting model: {e}")
 
 
 
