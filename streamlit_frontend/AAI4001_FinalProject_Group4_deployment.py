@@ -492,6 +492,8 @@ with tab1:
                 <div class="metric-card">
                     <h2>🌾 Predicted Crop Yield</h2>
                     <h1>{prediction:,.2f} hg/ha</h1>
+                    <h1>{prediction * 0.001:,.2f} kg/a</h1>
+                    <h1>{prediction * 0.001 * 2.20462:,.2f} lb/a</h1>
                     <p>{crop} — {year}</p>
                 </div>
                 """, unsafe_allow_html=True)
