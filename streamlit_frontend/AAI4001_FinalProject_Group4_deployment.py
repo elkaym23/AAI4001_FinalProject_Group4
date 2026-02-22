@@ -489,14 +489,14 @@ with tab1:
                 prediction = response.json()["predicted_yield_hg_per_ha"]
 
                 st.markdown(f"""
-                <div class="metric-card">
-                    <h2>🌾 Predicted Crop Yield</h2>
-                    <h1>{prediction:,.2f} hg/ha</h1>
-                    <h1>{prediction * 0.001:,.2f} kg/a</h1>
-                    <h1>{prediction * 0.001 * 2.20462:,.2f} lb/a</h1>
-                    <p>{crop} — {year}</p>
-                </div>
-                """, unsafe_allow_html=True)
+                    <div class="metric-card">
+                        <h2>🌾 Predicted Crop Yield</h2>
+                        <h1>{prediction:,.2f} hg/ha</h1>
+                        <h1>{prediction * 0.04047:,.2f} kg/acre</h1>
+                        <h1>{prediction * 0.08921:,.2f} lb/acre</h1>
+                        <p>{crop} — {year}</p>
+                    </div>
+                    """, unsafe_allow_html=True)
 
             else:
                 st.error("❌ FastAPI request failed. Check your backend server.")
